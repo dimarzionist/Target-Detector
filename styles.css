@@ -1,0 +1,94 @@
+﻿ html, body
+{
+    margin:0;
+    padding:0;
+}
+ 
+.real-object{}
+ 
+.simple-target
+{
+    background:url('http://www.arachnoboards.com/ab/images/avatars/Star_Wars_-_Tie_Fighter_3.gif');
+    width:32px;
+    height:32px;
+    position:absolute;    
+    z-index:5;
+    -webkit-border-radius:3px;
+}
+ 
+.simple-camera
+{
+    border:solid 4px #444477;
+    width:98%;
+    height:400px;
+    position:absolute;
+    z-index:10;
+}
+ 
+.hidden-element
+{
+    display:none;
+}
+ 
+.switch-off-camera
+{
+    background-color:black;
+}
+ 
+.control-button
+{
+    margin-top:420px;
+}
+ 
+.square-sight
+{
+    border:solid 1px #009933;
+    background:rgba(180, 230, 255, 0.5);
+    position:absolute;
+    left:250px;
+    top:95px;
+    width:50px;
+    height:50px;
+    z-index:20;
+    cusrsor:crosshair;
+}
+ 
+.square-sight .inner-sight
+{
+    border:solid 1px #ffff00;
+    background:transparent;
+    width:30px;
+    height:30px;
+    position:relative;
+    left:9px;
+    top:9px;
+}
+ 
+section
+{
+    padding:5px;
+    width:450px;
+}
+label
+{
+    display:block;
+    width:250px;
+    float:left;
+}
+#speed, #acc, #error, #rate, #number
+{
+    display:block;
+    float:left;
+}
+#lock
+{
+    width:300px;
+    margin-left:10px;
+}
+#log
+{
+    position:absoulte;
+    bottom:5px;
+    background:yellow;
+    font-weight:bold;
+}

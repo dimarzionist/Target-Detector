@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <title>Target detector/locker</title> 
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.5.1.js"></script>
+  <script type="text/javascript" src="targetDetector.js"></script> 
+  <link rel="stylesheet" type="text/css" href="http://fiddle.jshell.net/css/normalize.css"> 
+  <link rel="Stylesheet" type="text/css" href="styles.css" />
+</head> 
+<body> 
+  <div id="frontCamera" class="simple-camera switch-off-camera"> 
+    <div id="sightCapture" class="square-sight hidden-element"><div class="inner-sight"></div></div> 
+    <div class="simple-target hidden-element real-object"></div>    
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+    <div class="simple-target hidden-element"></div> 
+</div> 
+ 
+<button id="start" title="Initialise sight camera" class="control-button">&#9658;</button> 
+<button id="stop" title="Shutdown sight camera" class="control-button" disabled="disabled">&#9679;</button> 
+<button id="release" title="Release locked target" class="control-button" disabled="disabled">~</button> 
+<button id="controls" class="control-button">...</button> 
+Target Lock:<progress id="lock" value="0.0"></progress> 
+<section id="advancedControls" class="hidden-element"> 
+    <label>Number of targets</label><input id="number" type="range" min="1" max="10" value="1"/> 
+    <label>Target speed:</label><input id="speed" type="range" min="10" max="100" value="50"/> 
+    <label>Target acceleration:</label><input id="acc" type="range" min="1" max="20" value="2"/> 
+    <label>Error margin:</label><input id="error" type="range" min="1" max="10" value="3"/> 
+    <label>Detector rate:</label><input id="rate" type="range" min="10" max="100" value="50"/> 
+</section> 
+ 
+<div id="log"></div> 
+<script type="text/javascript" src="main.js"></script>  
+</body> 
+</html> 
+ 
