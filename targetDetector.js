@@ -9,6 +9,8 @@ TargetsControl.prototype = {
 	isTargetActive: false,
 	modelSettings: null,
 	camera: null,
+	mx: [0, 1, 1, 1, 0, -1, -1, -1, 0, 0, 0, 0],
+	my: [-1, -1, 0, 1, 1, 1, 0, -1, 0, 0, 0, 0],
 	setNumberOfTargets: function (numberOfTargets) {
 		if (!this.isTargetActive) {
 			this.targets.removeClass('real-object');
@@ -19,40 +21,10 @@ TargetsControl.prototype = {
 	},
 	changePosition: function (target) {
 		var tp = target.position();
-		var dX = tp.left;
-		var dY = tp.top;
 		var r = Math.round(Math.random() * 10); //number of directions target can move to
 		var d = Math.round(Math.random() * this.modelSettings.targetSpeed);
-		switch (r) {
-			case 0:
-				dY -= d;
-				break;
-			case 1:
-				dY -= d;
-				dX += d;
-				break;
-			case 2:
-				dX += d;
-				break;
-			case 3:
-				dY += d;
-				dX += d;
-				break;
-			case 4:
-				dY += d;
-				break;
-			case 5:
-				dY += d;
-				dX -= d;
-				break;
-			case 6:
-				dX -= d;
-				break;
-			case 7:
-				dY -= d;
-				dX -= d;
-				break;
-		}
+		var dX = tp.left + this.mx[r] * d;
+		var dY = tp.top + this.my[r] * d;
 		var cameraMargin = this.modelSettings.cameraMargin;
 		var camWidth = this.camera.screenWidth();
 		var camHeight = this.camera.screenHeight();
