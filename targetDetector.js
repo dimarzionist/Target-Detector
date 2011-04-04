@@ -66,8 +66,12 @@ TargetsControl.prototype = {
 			var t = $(this);
 			if (t.hasClass('real-object')) {
 				var offset = self.modelSettings.cameraMargin;
-				var left = Math.round(Math.random() * self.camera.screenWidth() - offset * 2) + offset;
-				var top = Math.round(Math.random() * self.camera.screenHeight() - offset * 2) + offset;				
+				var camWidth = self.camera.screenWidth();
+				var camHeight = self.camera.screenHeight();
+				var left = Math.round(Math.random() * camWidth);
+				var top = Math.round(Math.random() * camHeight);
+				left = left > camWidth ? left - offset : left;
+				top = top > camHeight ? top - offset : top;
 				t.css({ left: left, top: top }).fadeIn('slow');
 			}
 		});
