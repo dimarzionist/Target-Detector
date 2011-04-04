@@ -42,8 +42,8 @@ TargetsControl.prototype = {
 				var camHeight = self.camera.screenHeight();
 				var left = Math.round(Math.random() * camWidth);
 				var top = Math.round(Math.random() * camHeight);
-				left = left > camWidth ? left - offset : left;
-				top = top > camHeight ? top - offset : top;
+				left = left > camWidth - offset ? left - offset : left;
+				top = top > camHeight - offset ? top - offset : top;
 				t.css({ left: left, top: top }).fadeIn('slow');
 			}
 		});
