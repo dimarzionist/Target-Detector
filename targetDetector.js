@@ -57,7 +57,7 @@ TargetsControl.prototype = {
 		var camWidth = this.camera.screenWidth();
 		var camHeight = this.camera.screenHeight();
 		if (dX > cameraMargin && dY > cameraMargin && dX < camWidth - cameraMargin && dY < camHeight - cameraMargin) {
-			target.css('left', dX).css('top', dY);
+			target.css({ left: dX, top: dY });
 		}
 	},
 	startAll: function () {
@@ -65,10 +65,10 @@ TargetsControl.prototype = {
 		this.targets.each(function () {
 			var t = $(this);
 			if (t.hasClass('real-object')) {
-				var left = Math.round(Math.random() * self.camera.screenWidth() / 2) + 100;
-				var top = Math.round(Math.random() * self.camera.screenHeight() / 2) + 100;
-				t.css('left', left).css('top', top);
-				t.fadeIn('slow');
+				var offset = self.modelSettings.cameraMargin;
+				var left = Math.round(Math.random() * self.camera.screenWidth() - offset * 2) + offset;
+				var top = Math.round(Math.random() * self.camera.screenHeight() - offset * 2) + offset;				
+				t.css({ left: left, top: top }).fadeIn('slow');
 			}
 		});
 		this.startTargetsMovement();
@@ -171,8 +171,7 @@ Sight.prototype = {
 				var nX = e.pageX - w / 2;
 				var nY = e.pageY - h / 2;
 				if (nX > 1 && nY > 1 && (nX + w) < self.camera.cameraEl.width() && (nY + h) < self.camera.cameraEl.height()) {
-					self.sightEl.css('left', nX);
-					self.sightEl.css('top', nY);
+					self.sightEl.css({ left: nX, top: nY });
 					sp = self.sightEl.position();
 				}
 			}
@@ -257,7 +256,7 @@ Detector.prototype = {
 					if (Math.abs((p.top + th) - (sp.top + sh)) < e) {
 						dT += d;
 					}
-					self.sight.sightEl.css('left', dL).css('top', dT);
+					self.sight.sightEl.css({ left: dL, top: dT });
 					sp = self.sight.sightEl.position();
 					q++;
 				}
