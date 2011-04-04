@@ -1,7 +1,7 @@
 ﻿(function () {
 	var model = new TargetDetectionModel('#frontCamera', '.simple-target', '#sightCapture', '#lock');
 	var controlSurface = model.getControlSurface();
-	controlSurface.detectorOn = function () { $('#release').removeAttr('disabled'); }
+	controlSurface.detectorOn = function () { $('#release').removeAttr('disabled'); };
 
 	$('#start').click(function () {
 		$(this).attr('disabled', 'disabled');
