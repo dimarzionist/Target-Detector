@@ -1,24 +1,27 @@
 ﻿(function () {
+	//common selectors
+	var releaseBtn = $('#release'), startBtn = $('#start'), stopBtn = $('#stop');
+
 	var model = new TargetDetectionModel('#frontCamera', '.simple-target', '#sightCapture', '#lock');
 	var controlSurface = model.getControlSurface();
-	controlSurface.detectorOn = function () { $('#release').removeAttr('disabled'); };
+	controlSurface.detectorOn = function () { releaseBtn.removeAttr('disabled'); };
 
-	$('#start').click(function () {
+	startBtn.click(function () {
 		$(this).attr('disabled', 'disabled');
 		$('#number').attr('disabled', 'disabled');
-		$('#stop').removeAttr('disabled');
+		stopBtn.removeAttr('disabled');
 		controlSurface.start();
 	});
-	$('#stop').click(function () {
+	stopBtn.click(function () {
 		$(this).attr('disabled', 'disabled');
 		$('#number').removeAttr('disabled');
-		$('#release').attr('disabled', 'disabled');
-		$('#start').removeAttr('disabled');
+		releaseBtn.attr('disabled', 'disabled');
+		startBtn.removeAttr('disabled');
 		controlSurface.stop();
 	});
-	$('#release').click(function () {
+	releaseBtn.click(function () {
 		controlSurface.release();
-		$('#release').attr('disabled', 'disabled');
+		releaseBtn.attr('disabled', 'disabled');
 	});
 	$('#controls').click(function () {
 		var a = $('#advancedControls');
