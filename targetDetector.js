@@ -1,10 +1,12 @@
 ﻿// Target control model
 function TargetsControl(targetsSelector, modelSettings, camera) {
+	this.targetsSelector = targetsSelector;
 	this.targets = $(targetsSelector);
 	this.modelSettings = modelSettings;
 	this.camera = camera;
 }
 TargetsControl.prototype = {
+	targetsSelector: null,
 	targets: null,
 	isTargetActive: false,
 	modelSettings: null,
@@ -13,6 +15,7 @@ TargetsControl.prototype = {
 	my: [-1, -1, 0, 1, 1, 1, 0, -1, 0, 0, 0, 0],
 	setNumberOfTargets: function (numberOfTargets) {
 		if (!this.isTargetActive) {
+			this.targets = $(this.targetsSelector);
 			this.targets.removeClass('real-object');
 			for (var i = 0; i < numberOfTargets; i++) {
 				$(this.targets[i]).addClass('real-object');
@@ -20,12 +23,12 @@ TargetsControl.prototype = {
 		}
 	},
 	changePosition: function (target) {
-		var tp = target.position();											// getting current target posiiton
-		var r = Math.round(Math.random() * 10);								// getting random direction where we want to move the target
+		var tp = target.position(); 										// getting current target posiiton
+		var r = Math.round(Math.random() * 10); 							// getting random direction where we want to move the target
 		var d = Math.round(Math.random() * this.modelSettings.targetSpeed); // getting random offset (less or erual target max speed)
 		var dX = tp.left + this.mx[r] * d;
 		var dY = tp.top + this.my[r] * d;
-		var cameraMargin = this.modelSettings.cameraMargin;					// ensuring the target is still within camera view
+		var cameraMargin = this.modelSettings.cameraMargin; 				// ensuring the target is still within camera view
 		var camWidth = this.camera.screenWidth();
 		var camHeight = this.camera.screenHeight();
 		if (dX > cameraMargin && dY > cameraMargin && dX < camWidth - cameraMargin && dY < camHeight - cameraMargin) {

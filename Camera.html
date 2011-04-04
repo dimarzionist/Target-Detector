@@ -11,17 +11,11 @@
 <body> 
   <div id="frontCamera" class="simple-camera switch-off-camera"> 
     <div id="sightCapture" class="square-sight hidden-element"><div class="inner-sight"></div></div> 
-    <div class="simple-target hidden-element real-object"></div>    
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-    <div class="simple-target hidden-element"></div> 
-</div> 
+	<div class="simple-target hidden-element real-object"></div>	
+</div>
+<div id="targetTemplate" class="hidden-element">
+	<div class="simple-target hidden-element real-object"></div>	
+</div>
  
 <button id="start" title="Initialise sight camera" class="control-button">&#9658;</button> 
 <button id="stop" title="Shutdown sight camera" class="control-button" disabled="disabled">&#9679;</button> 
@@ -29,7 +23,7 @@
 <button id="controls" class="control-button">...</button> 
 Target Lock:<progress id="lock" value="0.0"></progress> 
 <section id="advancedControls" class="hidden-element"> 
-    <label>Number of targets</label><input id="number" type="range" min="1" max="10" value="1"/> 
+    <label>Number of targets</label><input id="number" type="range" min="1" max="20" value="1"/> 
     <label>Target speed:</label><input id="speed" type="range" min="10" max="100" value="50"/> 
     <label>Target acceleration:</label><input id="acc" type="range" min="1" max="20" value="2"/> 
     <label>Error margin:</label><input id="error" type="range" min="1" max="10" value="3"/> 

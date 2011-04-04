@@ -2,10 +2,6 @@
 	//common selectors
 	var releaseBtn = $('#release'), startBtn = $('#start'), stopBtn = $('#stop');
 
-	var model = new TargetDetectionModel('#frontCamera', '.simple-target', '#sightCapture', '#lock');
-	var controlSurface = model.getControlSurface();
-	controlSurface.detectorOn = function () { releaseBtn.removeAttr('disabled'); };
-
 	startBtn.click(function () {
 		$(this).attr('disabled', 'disabled');
 		$('#number').attr('disabled', 'disabled');
@@ -49,10 +45,21 @@
 		controlSurface.setDetectionRate(detectionRate);
 	});
 	$('#number').change(function () {
-		controlSurface.setNumberOfTargets($(this).val());
-	});
-
+		var cam = $('#frontCamera');
+		cam.children('.simple-target').remove();
+		var tt = $('#targetTemplate').html();
+		var numberOfTargets = $(this).val();
+		for (var i = 0; i < numberOfTargets; i++) {
+			cam.append(tt);
+		}
+		controlSurface.setNumberOfTargets(numberOfTargets);
+	}); 
 	function log(txt) {
 		$('#log').html(txt);
 	}
+
+	// Model initialisation
+	var model = new TargetDetectionModel('#frontCamera', '.simple-target', '#sightCapture', '#lock');
+	var controlSurface = model.getControlSurface();
+	controlSurface.detectorOn = function () { releaseBtn.removeAttr('disabled'); };
 })();
