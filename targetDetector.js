@@ -31,7 +31,7 @@ TargetsControl.prototype = {
 		var cameraMargin = this.modelSettings.cameraMargin; 				// ensuring the target is still within camera view
 		var camWidth = this.camera.screenWidth();
 		var camHeight = this.camera.screenHeight();
-		if (dX > cameraMargin && dY > cameraMargin && dX < camWidth - cameraMargin && dY < camHeight - cameraMargin) {
+		if (dX > 0 && dY > 0 && dX < camWidth - cameraMargin && dY < camHeight - cameraMargin) {
 			target.css({ left: dX, top: dY });
 		}
 	},
@@ -175,6 +175,7 @@ Sight.prototype = {
 				}
 			});
 		});
+		self.sight.sightEl.children('.inner-sight').css('border', 'solid 1px #009933');
 	},
 	off: function () {
 		this.isSightActive = false;
