@@ -1,16 +1,19 @@
 ﻿(function () {
 	//common selectors
-	var releaseBtn = $('#release'), startBtn = $('#start'), stopBtn = $('#stop');
+	var releaseBtn = $('#release'),
+		startBtn = $('#start'), 
+		stopBtn = $('#stop'),
+		numSlider = $('#number');
 
 	startBtn.click(function () {
-		$(this).attr('disabled', 'disabled');
-		$('#number').attr('disabled', 'disabled');
+		startBtn.attr('disabled', 'disabled');
+		numSlider.attr('disabled', 'disabled');
 		stopBtn.removeAttr('disabled');
 		controlSurface.start();
 	});
 	stopBtn.click(function () {
-		$(this).attr('disabled', 'disabled');
-		$('#number').removeAttr('disabled');
+		stopBtn.attr('disabled', 'disabled');
+		numSlider.removeAttr('disabled');
 		releaseBtn.attr('disabled', 'disabled');
 		startBtn.removeAttr('disabled');
 		controlSurface.stop();
@@ -44,11 +47,11 @@
 		var detectionRate = $(this).attr('max') - $(this).val();
 		controlSurface.setDetectionRate(detectionRate);
 	});
-	$('#number').change(function () {
+	numSlider.change(function () {
 		var cam = $('#frontCamera');
 		cam.children('.simple-target').remove();
 		var tt = $('#targetTemplate').html();
-		var numberOfTargets = $(this).val();
+		var numberOfTargets = numSlider.val();
 		for (var i = 0; i < numberOfTargets; i++) {
 			cam.append(tt);
 		}

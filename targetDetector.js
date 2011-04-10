@@ -175,7 +175,7 @@ Sight.prototype = {
 				}
 			});
 		});
-		self.sight.sightEl.children('.inner-sight').css('border', 'solid 1px #009933');
+		self.sightEl.children('.inner-sight').css('border', 'solid 1px #009933');
 	},
 	off: function () {
 		this.isSightActive = false;
