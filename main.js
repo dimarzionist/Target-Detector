@@ -1,7 +1,7 @@
 ﻿(function () {
 	//common selectors
 	var releaseBtn = $('#release'),
-		startBtn = $('#start'), 
+		startBtn = $('#start'),
 		stopBtn = $('#stop'),
 		numSlider = $('#number');
 
@@ -52,11 +52,11 @@
 		cam.children('.simple-target').remove();
 		var tt = $('#targetTemplate').html();
 		var numberOfTargets = numSlider.val();
-		for (var i = 0; i < numberOfTargets; i++) {
+		for (var i = 0; i < numberOfTargets; i += 1) {
 			cam.append(tt);
 		}
 		controlSurface.setNumberOfTargets(numberOfTargets);
-	}); 
+	});
 	function log(txt) {
 		$('#log').html(txt);
 	}
